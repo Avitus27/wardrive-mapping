@@ -8,6 +8,17 @@ the networks based on type, security or risk of intrusion.
 
 ## Requirements
 
+Regardless of whether you're using this in dev or release, you'll need
+to have your ``` .env ``` set up. You can just ``` $ mv .env.example .env ```
+and edit the variables as you need.
+
+You'll also need to install composer and the projects dependencies:
+```bash
+$ curl -s http://getcomposer.org/installer | php
+# cd into the repo's directory
+$ composer install
+```
+
 ### Development
 Vagrant + Virtualbox
 
@@ -23,4 +34,4 @@ $ vagrant up
 Accessable by default on http://localhost:8080
 
 ### Release
-Just clone and run!
+Just clone set the required environment variables and run!
