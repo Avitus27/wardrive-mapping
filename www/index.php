@@ -1,4 +1,3 @@
 <?php
-	include("../components.php");
-	
+	require_once("../components.php");
 ?>
