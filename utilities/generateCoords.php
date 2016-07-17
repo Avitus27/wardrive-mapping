@@ -22,7 +22,7 @@ function generateMarkers( $table, $returnAsJSON = true ){
 		}
 	}
 	if($returnAsJSON){
-		//todo
+		return json_encode($returnTable);
 	} else {
 		return $returnTable;
 	}
