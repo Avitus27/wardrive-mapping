@@ -42,4 +42,17 @@ function generateMarkers( $table, $returnAsJSON = true ){
 	}
 }
 
+function findCentreOfPoints( $table ){
+	$xTotal = 0;
+	$yTotal = 0;
+	$count = 0;
+	foreach ($table as $row) {
+		$xTotal += $row["long"];
+		$yTotal += $row["lat"];
+		$count++; 
+	}
+	
+	return array("long" => $xTotal/$count, "lat" => $yTotal/$count);
+}
+
 ?>
