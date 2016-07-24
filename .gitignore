@@ -16,3 +16,5 @@ bootstrap/cache/
 
 composer.lock
 .vagrant/
+
+www/data.php

@@ -1,17 +1,11 @@
 <?php
 	require_once("../components.php");
-	$mysqli = mysqli_init();
 
-	if ( !mysqli_real_connect($mysqli, $_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']) ) {
-		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
-
-    $statement = mysqli_stmt_init($mysqli);
-    $query = "SELECT * FROM `wigle`";
-    if(mysqli_stmt_prepare($statement, $query)){
+	$statement = mysqli_stmt_init($mysqli);
+	$query = "SELECT * FROM `wigle`";
+	if(mysqli_stmt_prepare($statement, $query)){
 		mysqli_execute($statement);
-		var_dump($statement);
-    }
+	}
 ?>
 <html>
 	<head>
@@ -94,12 +88,6 @@
 				});";
 					}
 				?>
-
-				var marker = new google.maps.Marker({
-				  position: centrePoint,
-				  map: map,
-				  title: 'Click to zoom'
-				});
 
 				marker.addListener('click', function() {
 					map.setZoom(15);
