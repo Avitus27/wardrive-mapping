@@ -43,11 +43,11 @@
 					</div>
 					<div class="input-field col s12 m4">
 						<select multiple>
-							<option value="1">WEP</option>
-							<option value="2">WPA</option>
-							<option value="3">Open</option>
+							<option disabled="disabled">Select Any:</option>
+							<option value="1">UPC</option>
+							<option value="2">eircom</option>
 						</select>
-						<label>Security Type</label>
+						<label>Known Residence Vulnerability</label>
 					</div>
 					<div class="input-field col s12 m4">
 						<select multiple>
