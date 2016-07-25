@@ -2,7 +2,10 @@
 	require_once("vendor/autoload.php"); // Loads anything that's been added via composer
 	$dotenv = new Dotenv\Dotenv(__DIR__); // for .env
 	$dotenv->load();
-	$dotenv->required(["GOOGLE_API_KEY", "DB_HOST","DB_USERNAME", "DB_PASSWORD", "DB_DATABASE"]);// required, since we'll be accessing the maps API
+	$dotenv->required(["GOOGLE_API_KEY",
+			"DB_HOST","DB_USERNAME", "DB_PASSWORD", "DB_DATABASE",
+			"MAC_COL", "SSID_COL", "AUTHMODE_COL", "CHANNEL_COL", "LAT_COL", "LONG_COL", "ACCURACY_COL", "TYPE_COL"]);
+			// required, since we'll be accessing the maps API, db, and need column indexes
 	if ( getenv( 'GOOGLE_API_SECRET' ) ){ // We should only have this function ready if we have an API Secret
 		require_once("utilities/mapSign.php");// A handy function for signing G-maps requests, adds security
 	}
@@ -13,5 +16,6 @@
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
 
-	$mappings = array('UPC%07d' => 'UPCxxxxxxx ', 'eircom WPS' => 'eircomxxxx xxxx');
+	$mappings = array('UPC%07d' => 'UPCxxxxxxx ',
+					'eircom WPS' => 'eircomxxxx xxxx');
 ?>
