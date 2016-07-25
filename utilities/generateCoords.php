@@ -15,23 +15,24 @@
  * 							Or the JSON equivalant.
  */
 function generateMarkers( $table, $returnAsJSON = true ){
+
 	$returnTable = array();
 	$i = 0;
 	foreach ($table as $nestedTable) {
-		if ($nestedTable['Type'] == 'WIFI'){
-			$returnTable[$i]["SSID"] = $nestedTable['SSID'];
+		if ($nestedTable[$_ENV['TYPE_COL']] == 'WIFI'){
+			$returnTable[$i]['SSID'] = $nestedTable[$_ENV["SSID_COL"]];
 
-			if (strpos($nestedTable['AuthMode'], 'WEP') !== false) {
+			if (strpos($nestedTable[$_ENV['AUTHMODE_COL']], 'WEP') !== false) {
 				$returnTable[$i]["security"] = "WEP";
-			} elseif (strpos($nestedTable['AuthMode'], 'WPS') !== false) {
+			} elseif (strpos($_ENV["AUTHMODE_COL"], 'WPS') !== false) {
 				$returnTable[$i]["security"] = "WPS";
-			} elseif (strpos($nestedTable['AuthMode'], 'WPA') !== false) {
+			} elseif (strpos($_ENV["AUTHMODE_COL"], 'WPA') !== false) {
 				$returnTable[$i]["security"] = "WPA";
 			}
 
-			$returnTable[$i]["long"] = $nestedTable['CurrentLongitude'];
-			$returnTable[$i]["lat"] = $nestedTable['CurrentLatitude'];
-			$returnTable[$i]["accuracy"] = $nestedTable['Accuracy_meters'];
+			$returnTable[$i]["long"] = $nestedTable[$_ENV["LONG_COL"]];
+			$returnTable[$i]["lat"] = $nestedTable[$_ENV["LAT_COL"]];
+			$returnTable[$i]["accuracy"] = $nestedTable[$_ENV["ACCURACY_COL"]];
 			$i++;
 		}
 	}
@@ -51,8 +52,11 @@ function findCentreOfPoints( $table ){
 		$yTotal += $row["lat"];
 		$count++; 
 	}
-	
-	return array("long" => $xTotal/$count, "lat" => $yTotal/$count);
+
+	if( $count != 0)
+		return array("long" => $xTotal/$count, "lat" => $yTotal/$count);
+
+	return 0;
 }
 
 ?>

@@ -12,4 +12,6 @@
 	if ( !mysqli_real_connect($mysqli, $_ENV['DB_HOST'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_DATABASE']) ) {
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
+
+	$mappings = array('UPC%07d' => 'UPCxxxxxxx ', 'eircom WPS' => 'eircomxxxx xxxx');
 ?>

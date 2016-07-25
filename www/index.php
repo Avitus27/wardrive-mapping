@@ -4,8 +4,21 @@
 	$statement = mysqli_stmt_init($mysqli);
 	$query = "SELECT * FROM `wigle`";
 	if(mysqli_stmt_prepare($statement, $query)){
-		mysqli_execute($statement);
+		mysqli_stmt_execute($statement);
 	}
+	mysqli_stmt_close($statement);
+	
+	$TABLE_1 = array();
+	if ($result = mysqli_query($mysqli, $query)) {
+		while ($row = mysqli_fetch_row($result)) {
+			array_push($TABLE_1, $row);
+		}
+		mysqli_free_result($result);
+	}
+	mysqli_close($mysqli);
+
+	//var_dump($TABLE_1);
+	//die();
 ?>
 <html>
 	<head>
@@ -31,7 +44,7 @@
 			<!-- Options section -->
 			<div class="row">
 				<form class="col s12">
-					<div class="input-field col s12 m4">
+					<div class="input-field col s12 m12 l4">
 						<select multiple>
 							<option disabled="disabled">Select Any:</option>
 							<option value="1">WEP</option>
@@ -41,15 +54,15 @@
 						</select>
 						<label>Security Type</label>
 					</div>
-					<div class="input-field col s12 m4">
+					<div class="input-field col s12 m12 l4">
 						<select multiple>
 							<option disabled="disabled">Select Any:</option>
-							<option value="1">UPC</option>
+							<option value="1">UPC%07d</option>
 							<option value="2">eircom</option>
 						</select>
 						<label>Known Residence Vulnerability</label>
 					</div>
-					<div class="input-field col s12 m4">
+					<div class="input-field col s12 m12 l4">
 						<select multiple>
 							<option value="1">WEP</option>
 							<option value="2">WPA</option>
