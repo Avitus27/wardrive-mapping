@@ -175,7 +175,7 @@
 				var marker = new google.maps.Marker({
 					position: {lat: {$marker['lat']}, lng: {$marker['long']}},
 					map: map,
-					title: '{$marker['SSID']}'
+					title: '" . htmlspecialchars($marker['SSID']) . "'
 				});";
 					}
 				?>
