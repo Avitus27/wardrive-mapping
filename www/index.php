@@ -50,12 +50,12 @@
 		$eircomregex = "eircom[0-9]{4} [0-9]{4}";
 		if (in_array(1, $filters[1])) {
 			$query .= $addOR ? " OR " : " WHERE ";
-			$query .= "SSID RLIKE '" . $UPCregex . "'";
+			$query .= "SSID RLIKE '{$UPCregex}'";
 			$addOR = true;
 		}
 		if (in_array(2, $filters[1])) {
 			$query .= $addOR ? " OR " : " WHERE ";
-			$query .= "SSID RLIKE '" . $eircomregex . "'";
+			$query .= "SSID RLIKE '{$eircomregex}'";
 			$addOR = true;
 		}
 	}
@@ -161,7 +161,7 @@
 					//centre the map
 					$markerPos = generateMarkers($TABLE_1, false);
 					$centrePoint = findCentreOfPoints($markerPos);
-					echo "var centrePoint = {lat: " . $centrePoint["lat"] . ", lng: " . $centrePoint["long"] . "};";
+					echo "var centrePoint = {lat: {$centrePoint["lat"]}, lng: {$centrePoint["long"]}};";
 				?>
 
 				var map = new google.maps.Map(document.getElementById('map'), {
@@ -173,9 +173,9 @@
 					foreach ($markerPos as $marker) {
 						echo "
 				var marker = new google.maps.Marker({
-					position: {lat: " . $marker['lat'] . ", lng: " . $marker['long'] . "},
+					position: {lat: {$marker['lat']}, lng: {$marker['long']}},
 					map: map,
-					title: '" . $marker['SSID'] . "'
+					title: '{$marker['SSID']}'
 				});";
 					}
 				?>
