@@ -56,7 +56,7 @@ function findCentreOfPoints( $table ){
 	if( $count != 0)
 		return array("long" => $xTotal/$count, "lat" => $yTotal/$count);
 
-	return 0;
+	return array("long" => 0, "lat" => 0);
 }
 
 ?>

@@ -189,6 +189,11 @@
 			<script async defer
 				src="//maps.googleapis.com/maps/api/js?key=<?php echo($_ENV['GOOGLE_API_KEY']) ?>&callback=initMap">
 			</script>
+			<?php
+				if ($centrePoint == array("long" => 0, "lat" => 0)){
+					echo "There may be no results for this search, please try with different search filters or make sure there's data in the database";
+				}
+			?>
 		</div>
 		<!-- jQuery and Materialize -->
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
