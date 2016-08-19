@@ -46,8 +46,8 @@
 	}
 
 	if (isset($filters[1])) {
-		$UPCregex = "UPC[0-9]{7}";
-		$eircomregex = "eircom[0-9]{4} [0-9]{4}";
+		$UPCregex = "^UPC[0-9]{7}$";
+		$eircomregex = "^eircom[0-9]{4} [0-9]{4}$";
 		if (in_array(1, $filters[1])) {
 			$query .= $addOR ? " OR " : " WHERE ";
 			$query .= "SSID RLIKE '{$UPCregex}'";
