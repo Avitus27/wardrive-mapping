@@ -16,6 +16,6 @@
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
 
-	$mappings = array('UPC%07d' => 'UPCxxxxxxx ',
+	$mappings = array('UPC%07d' => 'UPCxxxxxxx',
 					'eircom WPS' => 'eircomxxxx xxxx');
 ?>
