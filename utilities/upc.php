@@ -1,4 +1,5 @@
 <?php
+	// Adapted from blasty <peter@haxx.in> upc_keys.c
 	$MAGIC_24GHZ = hexdec("ffd9da60");
 	$MAGIC_5GHZ = hexdec("ff8d8f20");
 	$MAGIC0 = hexdec("b21642c9ll");
