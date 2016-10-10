@@ -25,7 +25,7 @@
 	if( isset($filters[0]) ){
 		$query .= " WHERE ";
 		if (in_array(1, $filters[0])) {
-			$query .= "AuthMode LIKE \"%WEP%\"";
+			$query .= "AuthMode LIKE \"%[WEP]%\"";
 			$addOR = true;
 		}
 		if (in_array(2, $filters[0])) {
@@ -40,7 +40,7 @@
 		}
 		if (in_array(4, $filters[0])) {
 			$query .= $addOR ? " OR " : "";
-			$query .= "AuthMode IS NULL OR AuthMode = \"\"";
+			$query .= "AuthMode IS NULL OR AuthMode = \"\" OR AuthMode = \"[ESS]\" OR AuthMode = \"[WPS][ESS]\"";
 			$addOR = true;
 		}
 	}
